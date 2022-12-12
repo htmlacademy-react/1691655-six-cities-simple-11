@@ -21,7 +21,7 @@ function LoginScreen ():JSX.Element {
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    if (loginRef.current !== null && passwordRef.current !== null && regex.test(passwordRef.current!.value)) {
+    if (loginRef.current !== null && passwordRef.current !== null && regex.test(passwordRef.current.value)) {
       onSubmit({
         login: loginRef.current.value,
         password: passwordRef.current.value,

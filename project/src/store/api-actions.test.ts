@@ -7,7 +7,6 @@ import { State } from '../types/state';
 import { ApiRoutes } from '../consts';
 import { checkAuthAction, fetchAllOffersAction, logoutAction } from './api-actions';
 import { makeFakeOffer } from '../utils/mock';
-import exp from 'constants';
 
 describe ('Async actions', () => {
   const api = createAPI();
@@ -76,6 +75,6 @@ describe ('Async actions', () => {
     ]);
 
     expect(Storage.prototype.removeItem).toBeCalledTimes(1);
-    expect(Storage.prototype.removeItem).toBeCalledWith('my-token')
-  })
+    expect(Storage.prototype.removeItem).toBeCalledWith('my-token');
+  });
 });

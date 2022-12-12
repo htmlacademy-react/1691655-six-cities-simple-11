@@ -1,7 +1,6 @@
 import { useParams } from 'react-router';
 import Map from '../../components/map/map';
 import ReviewFormScreen from '../../components/review-form/review-form';
-import ReviewsListScreen from '../../components/reviews-list/reviews-list';
 import { Offer } from '../../types/offer-type';
 import { getRatingInProcent } from '../../utils';
 import OffersListScreen from '../../components/offers-list/offers-list';

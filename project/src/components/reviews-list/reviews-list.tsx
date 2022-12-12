@@ -4,14 +4,14 @@ import { Review } from '../../types/review-type';
 import { getRatingInProcent } from '../../utils';
 
 type props = {
-  reviews: Review[],
-}
+  reviews: Review[];
+};
 
-const getProperDate = (date: Date): string  => {
-  const properDateString= date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+const getProperDate = (date: Date): string => {
+  const properDateString = date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 
   return properDateString;
-}
+};
 
 function ReviewsList ({reviews}: props):JSX.Element {
   const reviewsNumber = useAppSelector(getReviews).length;
