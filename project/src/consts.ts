@@ -2,6 +2,9 @@ import { CityType } from './types/offer-type';
 
 export const REVIEWS_PER_PAGE = 10;
 
+export const MIN_REVIEW_LENGHT = 50;
+export const MAX_REVIEW_LENGHT = 300;
+
 export const SORT_TYPES = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
 export const RATES_TYPES = ['terribly', 'badly', 'not bad', 'good', 'perfect'];

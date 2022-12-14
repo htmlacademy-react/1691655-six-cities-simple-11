@@ -5,8 +5,9 @@ import { createAPI } from '../services/api';
 import {configureMockStore} from '@jedmao/redux-mock-store';
 import { State } from '../types/state';
 import { ApiRoutes } from '../consts';
-import { checkAuthAction, fetchAllOffersAction, logoutAction } from './api-actions';
+import { checkAuthAction, fetchAllOffersAction, loginAction, logoutAction } from './api-actions';
 import { makeFakeOffer } from '../utils/mock';
+import { AuthData } from '../types/auth-data';
 
 describe ('Async actions', () => {
   const api = createAPI();
@@ -55,13 +56,36 @@ describe ('Async actions', () => {
     ]);
   });
 
-  // it('should dispatch ')
-  it('it should dispatch Logout when delete /logout', async () => {
-    const store = mockStore();
+  it('should dispatch Authorization when POST /login', async () => {
+    const fakerUser: AuthData = {login: 'vettrov78@mail.ru', password: '12345'};
 
     mockAPI
-      .onGet(ApiRoutes.Logout)
+      .onPost(ApiRoutes.Login)
+      .reply(200, {token: 'secret'});
+
+    const store = mockStore();
+    Storage.prototype.setItem = jest.fn();
+
+    await store.dispatch(loginAction(fakerUser));
+
+    const actions = store.getActions().map(({type}) => type);
+
+    expect(Storage.prototype.setItem).toBeCalledTimes(1);
+    expect(Storage.prototype.setItem).toBeCalledWith('my-token', 'secret');
+
+    expect(actions).toEqual([
+      loginAction.pending.type,
+      loginAction.fulfilled.type,
+    ]);
+
+  });
+
+  it('it should dispatch Logout when delete /logout', async () => {
+    mockAPI
+      .onDelete(ApiRoutes.Logout)
       .reply(204);
+
+    const store = mockStore();
 
     Storage.prototype.removeItem = jest.fn();
 
