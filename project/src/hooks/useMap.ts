@@ -38,7 +38,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: Location): M
 
         isRefRendered.current = true;
       }
-    }, [mapRef, city]);
+    }, [mapRef, city, map]);
 
   return map;
 }

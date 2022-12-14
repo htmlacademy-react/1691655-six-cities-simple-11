@@ -13,7 +13,6 @@ const appProcess = createSlice({
   reducers: {
     changeCity: (state, action: PayloadAction<{city: string}>) => {
       state.city = action.payload.city;
-      state.sortType = 'Popular';
     },
     changeSortType: (state, action: PayloadAction<{sortType: string}>) => {
       state.sortType = action.payload.sortType;

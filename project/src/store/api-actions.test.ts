@@ -80,7 +80,7 @@ describe ('Async actions', () => {
 
   });
 
-  it('it should dispatch Logout when delete /logout', async () => {
+  it('should dispatch Logout when delete /logout', async () => {
     mockAPI
       .onDelete(ApiRoutes.Logout)
       .reply(204);

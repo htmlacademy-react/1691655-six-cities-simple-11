@@ -10,7 +10,7 @@ type OfferListScreenProps = {
 
 function OffersListScreen (props: OfferListScreenProps):JSX.Element {
   const { className, offers, setActiveOffer } = props;
-  const handleClick = useCallback((currentOffer: Offer | undefined) => setActiveOffer(currentOffer), []);
+  const handleClick = useCallback((currentOffer: Offer | undefined) => setActiveOffer(currentOffer), [setActiveOffer]);
 
   return (
     <div className={`${className} places__list`}>

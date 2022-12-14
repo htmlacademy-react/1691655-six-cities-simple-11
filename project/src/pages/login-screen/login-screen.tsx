@@ -56,7 +56,7 @@ function LoginScreen ():JSX.Element {
     return () => {
       isLogin = false;
     };
-  }, [authStatus]);
+  }, [authStatus, navigate]);
 
   const passwordHintStyle = {
     marginTop: '-15px',
