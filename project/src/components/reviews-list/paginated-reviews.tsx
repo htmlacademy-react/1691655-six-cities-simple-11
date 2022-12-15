@@ -36,12 +36,12 @@ function PaginatedReviews ({reviewsPerPage} : propsType): JSX.Element {
         pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel='< previous'
-        renderOnZeroPageCount={null}
         containerClassName={'pagination'}
         previousLinkClassName={'pagination__link'}
         nextLinkClassName={'pagination__link'}
         disabledClassName={'pagination__link--disabled'}
         activeClassName={'pagination__link--active'}
+        renderOnZeroPageCount={() => null}
       />
     </>
   );

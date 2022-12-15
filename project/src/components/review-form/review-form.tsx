@@ -47,7 +47,7 @@ function RewievFormScreen (): JSX.Element {
       className="reviews__form form"
       action=""
       method="post"
-      onSubmit={() => handleSubmit}
+      onSubmit={(event) => {void handleSubmit(event);}}
     >
       <fieldset
         style={{border: 'none'}}
