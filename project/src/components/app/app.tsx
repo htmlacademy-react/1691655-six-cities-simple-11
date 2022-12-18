@@ -24,7 +24,9 @@ function App(): JSX.Element {
   }
 
   if (hasError) {
-    <ErrorScreen />;
+    return (
+      <ErrorScreen />
+    );
   }
 
   return (

@@ -12,7 +12,7 @@ import { AuthorizationStatus, REVIEWS_PER_PAGE } from '../../consts';
 import { getNearOffers, getOffers } from '../../store/app-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import PaginatedReviews from '../../components/reviews-list/paginated-reviews';
+import PaginatedReviews from '../../components/paginated-reviews/paginated-reviews';
 
 
 function PropertyScreen (): JSX.Element {
@@ -27,7 +27,6 @@ function PropertyScreen (): JSX.Element {
   const root = document.getElementById('root') as HTMLElement;
   root.style.cssText = '';
 
-  //При изменении текущего объекта страница скролится наверх
   useEffect(() => {
     window.scroll(0, 0);
     if (currentOffer) {
@@ -57,7 +56,7 @@ function PropertyScreen (): JSX.Element {
             <div className="property__container container">
               <div className="property__wrapper">
                 {
-                  currentOffer?.isPremium &&
+                  currentOffer.isPremium &&
                   <div className="property__mark">
                     <span>Premium</span>
                   </div>
@@ -65,7 +64,7 @@ function PropertyScreen (): JSX.Element {
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
                     {
-                      currentOffer?.title
+                      currentOffer.title
                     }
                   </h1>
                 </div>
@@ -76,30 +75,30 @@ function PropertyScreen (): JSX.Element {
                   </div>
                   <span className="property__rating-value rating__value">
                     {
-                      currentOffer?.rating
+                      currentOffer.rating
                     }
                   </span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {currentOffer?.type}
+                    {currentOffer.type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {`${currentOffer?.bedrooms || ''} bedrooms`}
+                    {`${currentOffer.bedrooms || ''} bedrooms`}
                   </li>
                   <li className="property__feature property__feature--adults">
-                    {`Max ${currentOffer?.maxAdults || 0} adults`}
+                    {`Max ${currentOffer.maxAdults || 0} adults`}
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">&euro;{currentOffer?.price}</b>
+                  <b className="property__price-value">&euro;{currentOffer.price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
                     {
-                      currentOffer?.goods.map((good) => (
+                      currentOffer.goods.map((good) => (
                         <li
                           key={`good-${good}`}
                           className="property__inside-item"
@@ -113,16 +112,16 @@ function PropertyScreen (): JSX.Element {
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
-                    <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src={currentOffer?.host.avatarUrl} width="74" height="74" alt="Host avatar" />
+                    <div className={ `property__avatar-wrapper user__avatar-wrapper ${ currentOffer.host.isPro ? 'property__avatar-wrapper--pro' : '' }` }>
+                      <img className="property__avatar user__avatar" src={currentOffer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
-                      {currentOffer?.host.name}
+                      {currentOffer.host.name}
                     </span>
-                    {currentOffer?.host.isPro && <span className="property__user-status">Pro</span>}
+                    {currentOffer.host.isPro && <span className="property__user-status">Pro</span>}
                   </div>
                   <div className="property__description">
-                    {currentOffer?.description}
+                    {currentOffer.description}
                   </div>
                 </div>
                 <section className="property__reviews reviews">

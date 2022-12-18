@@ -22,7 +22,7 @@ function ReviewsList ({reviews}: props):JSX.Element {
       <ul className="reviews__list">
         {
           reviews &&
-            reviews.slice(0, 10).map( (review) => (
+            reviews.map( (review) => (
               <li key={review.id} className="reviews__item">
                 <div className="reviews__user user">
                   <div className="reviews__avatar-wrapper user__avatar-wrapper">

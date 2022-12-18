@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace } from '../../consts';
 import { AppData } from '../../types/state';
 import { normalizeArray } from '../../utils';
@@ -10,12 +10,17 @@ const initialState: AppData = {
   reviews: [],
   isOffersLoading: false,
   hasError: false,
+  isReviewPosted: undefined,
 };
 
 export const appData = createSlice({
   name: NameSpace.Data,
   initialState,
-  reducers: {},
+  reducers: {
+    changePostStatus: (state, action: PayloadAction<boolean | undefined>) => {
+      state.isReviewPosted = action.payload;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchAllOffersAction.pending, (state) => {
@@ -39,8 +44,14 @@ export const appData = createSlice({
       .addCase(fetchReviewsAction.rejected, (state) => {
         state.hasError = true;
       })
+      .addCase(postReviewAction.rejected, (state) => {
+        state.isReviewPosted = false;
+      })
       .addCase(postReviewAction.fulfilled, (state, action) => {
         state.reviews = action.payload;
+        state.isReviewPosted = true;
       });
   }
 });
+
+export const {changePostStatus} = appData.actions;

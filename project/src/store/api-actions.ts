@@ -100,8 +100,6 @@ export const postReviewAction = createAsyncThunk<Review[], {
   async ({hotelId, comment, rating}, {dispatch, extra: api}) => {
     const {data} = await api.post<Review[]>(`${ApiRoutes.Reviews}/${hotelId}`, {comment, rating});
 
-    window.scroll(0, 0);
-
     return data;
   }
 );

@@ -9,6 +9,7 @@ export type AppData = {
   reviews: Review[];
   isOffersLoading: boolean;
   hasError: boolean;
+  isReviewPosted: boolean | undefined;
 }
 
 export type AppProcess = {

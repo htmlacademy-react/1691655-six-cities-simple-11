@@ -1,14 +1,14 @@
 import { Offer } from '../../types/offer-type';
-import CardScreen from '../../pages/card-screen/card-screen';
+import CardScreen from '../card-screen/card-screen';
 import { useCallback } from 'react';
 
-type OfferListScreenProps = {
+type OfferListProps = {
   className: string;
   offers: Offer[];
   setActiveOffer: (arg0: Offer | undefined) => void;
 }
 
-function OffersListScreen (props: OfferListScreenProps):JSX.Element {
+function OffersList (props: OfferListProps):JSX.Element {
   const { className, offers, setActiveOffer } = props;
   const handleClick = useCallback((currentOffer: Offer | undefined) => setActiveOffer(currentOffer), [setActiveOffer]);
 
@@ -31,4 +31,4 @@ function OffersListScreen (props: OfferListScreenProps):JSX.Element {
   );
 }
 
-export default OffersListScreen;
+export default OffersList;
