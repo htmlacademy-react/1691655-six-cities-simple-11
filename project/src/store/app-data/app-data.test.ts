@@ -17,13 +17,13 @@ describe('Reducer: app-data', () => {
     const state = {offers: {}, isOffersLoading: false, hasError: false, nearOffers: [], reviews: [], isReviewPosted: false,};
 
     expect(appData.reducer(state, {type: fetchAllOffersAction.fulfilled.type, payload: offers}))
-      .toEqual({offers: normalizedOffers, isOffersLoading: false, hasError: false, nearOffers: [], reviews: []});
+      .toEqual({offers: normalizedOffers, isOffersLoading: false, hasError: false, nearOffers: [], reviews: [], isReviewPosted: false,});
   });
 
   it('should set hasError flag if server is unavailable', () => {
     const state = {offers: {}, isOffersLoading: false, hasError: false, nearOffers: [], reviews: [], isReviewPosted: false,};
 
     expect(appData.reducer(state, {type: fetchAllOffersAction.rejected.type}))
-      .toEqual({offers: {}, isOffersLoading: false, hasError: true, nearOffers: [], reviews: []});
+      .toEqual({offers: {}, isOffersLoading: false, hasError: true, nearOffers: [], reviews: [], isReviewPosted: false,});
   });
 });
